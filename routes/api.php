@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\ChannelController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,12 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('channels');
+Route::get('/channels', [ChannelController::class, 'index']);
 
-Route::get('channels/{channel}/{date}/timezone/{timezone}');
+Route::get(
+    'channels/{channel}/{date}/timezone/{timezone}',
+    [ChannelController::class, 'getTimetable']
+)->where('timezone', '.*'); // Where clause here enables us to encode forward slashes
 
-Route::get('channels/{channel}/programmes/{programme}');
-
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('channels/{channel}/programmes/{programme}',  [ChannelController::class, 'getProgramme']);
