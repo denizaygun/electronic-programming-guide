@@ -4,21 +4,25 @@ declare(strict_types=1);
 
 namespace App\Repositories;
 
+use App\Http\Resources\ProgrammeResource;
+use App\Http\Resources\TimetableCollection;
 use App\Models\Channel;
 use App\Models\Programme;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 
-class ChannelRepository implements ChannelInterface {
+class ChannelRepository implements ChannelInterface
+{
 
     /**
      * List of all channels via cache.
      * 
-     * @return Cache
+     * @return Collection
      */
-    public function all(): Cache {
-        return Cache::get('channels', function () {
-            return Channel::all();
+    public function all(): Collection
+    {
+        return Cache::rememberForever('channels', function () {
+            return Channel::select('id', 'name', 'icon')->get();
         });
     }
 
@@ -29,12 +33,11 @@ class ChannelRepository implements ChannelInterface {
      * @param string $date
      * @param string $timezone A valid PHP timezoneID
      * 
-     * @return Collection
+     * @return TimetableCollection
      */
-    public function timetable($channel, $date, $timezone): Collection {
-        return Channel::with(['timetable' => function ($query) use ($date, $timezone) {
-            $query->byDate($date, $timezone);
-        }])->findOrFail($channel);
+    public function getTimetable($channel, $date, $timezone): TimetableCollection
+    {
+        return new TimetableCollection(Programme::byChannel($channel)->byDate($date, $timezone)->get());
     }
 
     /**
@@ -43,9 +46,10 @@ class ChannelRepository implements ChannelInterface {
      * @param $channel UUID
      * @param $programme UUID 
      *
-     * @return Collection
+     * @return ProgrammeResource
      */
-    public function programme($channel, $programme): Collection {
-        return Programme::with('channel')->findOrFail($programme);
+    public function getProgramme($channel, $programme): ProgrammeResource
+    {
+        return new ProgrammeResource(Programme::with('channel:id,name,icon')->findOrFail($programme));
     }
 }

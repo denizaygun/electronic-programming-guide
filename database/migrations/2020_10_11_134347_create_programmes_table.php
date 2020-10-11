@@ -15,8 +15,7 @@ class CreateProgrammesTable extends Migration
     {
         Schema::create('programmes', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->uuid('channel_id');
-            $table->foreign('channel_id')->references('id')->on('channels');
+            $table->foreignUuid('channel_id')->references('id')->on('channels');
             $table->string('name');
             $table->string('description');
             $table->string('thumbnail');
