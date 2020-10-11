@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Channel;
+use App\Models\Programme;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,6 +15,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        // Seed 3 channels with 10 programmes each via their factories.
+        Channel::factory()->has(
+            Programme::factory()->count(10)
+        )->count(3)->create();
     }
 }
