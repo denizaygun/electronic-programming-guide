@@ -1,0 +1,90 @@
+{
+	"info": {
+		"_postman_id": "44217f71-99f7-441f-a38f-80b7bd007f60",
+		"name": "simplestream-epg",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Channels",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/api/channels",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"channels"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Timetable",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/api/channels/365a5f2b-55aa-3d34-a9d7-dafd927c9ed7/2020-10-11 18:00:00/timezone/Europe/London",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"channels",
+						"365a5f2b-55aa-3d34-a9d7-dafd927c9ed7",
+						"2020-10-11 18:00:00",
+						"timezone",
+						"Europe",
+						"London"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Programme",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/api/channels/365a5f2b-55aa-3d34-a9d7-dafd927c9ed7/programmes/017c40c0-a6f4-3ecd-b42d-0e1a27817a1e",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"channels",
+						"365a5f2b-55aa-3d34-a9d7-dafd927c9ed7",
+						"programmes",
+						"017c40c0-a6f4-3ecd-b42d-0e1a27817a1e"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

@@ -1,6 +1,6 @@
 # Electronic Programme Guide API
 
-An EPG that can be consumed by various apps.
+An EPG that can be consumed by various apps
 
 ## Setup
 
@@ -14,7 +14,7 @@ git clone git@github.com:denizaygun/electronic-programming-guide.git
 composer install
 ```
 
-3. Copy the example environment file, setup a local database and poplulate the DB fields.
+3. Copy the example environment file, setup a local database and poplulate the DB fields
 ```
 cp .env.example .env
 ```
@@ -34,7 +34,9 @@ php artisan migrate
 php artisan serve
 ```
 
-7. (Optional) Utilise the [Postman collection](epg-api.postman_collection.json) provided in the project
+7. (Optional) Utilise the [Postman collection](simplestream-epg.postman_collection.json) provided in the project
+
+8. (Optional) Review the database EER diagram ([PDF](epg-eer.pdf) or [MySQL Workbench](epg-eer.mwb)) provided in the project
 
 ## Testing
 
