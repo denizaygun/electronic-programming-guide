@@ -47,7 +47,7 @@ php artisan migrate --seed
 
 You may wish to clear your application cache if you've made requests already:
 ```
-php artisan cache:cle
+php artisan cache:clear
 ```
 
 ## Testing
