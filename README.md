@@ -38,6 +38,18 @@ php artisan serve
 
 8. (Optional) Review the database EER diagram ([PDF](epg-eer.pdf) or [MySQL Workbench](epg-eer.mwb)) provided in the project
 
+## Seeding
+
+You can seed your database with demo data with:
+```
+php artisan migrate --seed
+```
+
+You may wish to clear your application cache if you've made requests already:
+```
+php artisan cache:cle
+```
+
 ## Testing
 
 The project includes some unit and feature tests, you can run them with:
